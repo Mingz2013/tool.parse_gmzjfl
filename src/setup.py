@@ -58,7 +58,7 @@ def do_line(line):
 
 
 def do_dir(path):
-    out_str = ""
+    out_str_csv = ""
 
     for file_name in os.listdir(path):
         file_path = path + '/' + file_name
@@ -66,19 +66,18 @@ def do_dir(path):
             lines = f.readlines()
             for line in lines:
                 l = do_line(line)
-                out_str += l + "\n"
+                out_str_csv += l + "\n"
         pass
-    return out_str
-    pass
+    return out_str_csv
 
 
-def write_out(path, out_str):
+def write_out_csv(path, out_str_csv):
     with codecs.open(path, mode="w", encoding='utf-8') as f:
-        f.write(out_str)
+        f.write(out_str_csv)
     pass
 
 
 if __name__ == "__main__":
-    out_str = do_dir('data')
-    write_out("out/out.csv", out_str)
+    out_str_csv = do_dir('data')
+    write_out_csv("out/out.csv", out_str_csv)
     pass
